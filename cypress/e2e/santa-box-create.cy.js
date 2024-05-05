@@ -7,6 +7,14 @@ const inviteeBoxPage = require("../fixtures/pages/inviteeBoxPage.json");
 const inviteeDashboardPage = require("../fixtures/pages/inviteeDashboardPage.json");
 import { faker } from "@faker-js/faker";
 
+
+Cypress.Commands.add('customLogin', (email, password) => {
+  cy.visit('/login');
+  cy.get('[data-test=email]').type(email);
+  cy.get('[data-test=password]').type(password);
+  cy.get('[data-test=login-button]').click();
+});
+
 describe("user can create a box and run it", () => {
   //пользователь 1 логинится
   //пользователь 1 создает коробку
@@ -24,10 +32,10 @@ describe("user can create a box and run it", () => {
   let maxAmount = 50;
   let currency = "Евро";
   let inviteLink;
-
+ 
   it("user logins and create a box", () => {
     cy.visit("/login");
-    cy.login(users.userAutor.email, users.userAutor.password);
+    cy.customLogin(users.userAutor.email, users.userAutor.password);
     cy.contains("Создать коробку").click();
     cy.get(boxPage.boxNameField).type(newBoxName);
     cy.get(generalElements.arrowRight).click();
@@ -47,6 +55,16 @@ describe("user can create a box and run it", () => {
         expect(text).to.include("Моя карточка");
         expect(text).to.include("Подопечный");
       });
+  });
+
+  describe('Manage Box Participants', () => {
+    it('should add participants to the box', () => {
+      cy.addParticipant('Gonshik0001', 'kulshaev@gmail.com');
+      cy.addParticipant('Gonshik0002', 'kulshaev+1@gmail.com');
+      cy.addParticipant('Gonshik0003', 'kulshaev+2@gmail.com');
+      cy.addParticipant('Gonshik0004', 'kulshaev+3@gmail.com');
+            // Добавьте других участников по аналогии
+    });
   });
 
   it("add participants", () => {

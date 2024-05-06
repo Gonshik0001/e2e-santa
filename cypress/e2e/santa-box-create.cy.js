@@ -116,5 +116,14 @@ describe("user can create a box and run it", () => {
     cy.get('[data-test=run-draw]').click();
     cy.contains('Draw was successful').should('be.visible');
   });
+  after(() => {
+    cy.request({
+      method: 'DELETE',
+      url: `/api/box/${boxId}`, // Убедитесь, что у вас есть доступ к boxId
+      headers: {
+        'Authorization': `Bearer ${yourToken}`
+      }
+    });
+  });
   
 });

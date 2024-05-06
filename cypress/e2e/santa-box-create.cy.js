@@ -5,6 +5,8 @@ const dashboardPage = require("../fixtures/pages/dashboardPage.json");
 const invitePage = require("../fixtures/pages/invitePage.json");
 const inviteeBoxPage = require("../fixtures/pages/inviteeBoxPage.json");
 const inviteeDashboardPage = require("../fixtures/pages/inviteeDashboardPage.json");
+const { faker } = require('@faker-js/faker');
+
 import { faker } from "@faker-js/faker";
 
 
@@ -56,7 +58,17 @@ describe("user can create a box and run it", () => {
         expect(text).to.include("Подопечный");
       });
   });
-
+  Cypress.Commands.add("addParticipant", (name, email) => {
+    cy.get('input[name="name"]').type(name);
+    cy.get('input[name="email"]').type(email);
+    cy.get('button[id="add-participant"]').click();
+  });
+  it('Добавляет всех участников', () => {
+    cy.addParticipant('Иван Иванов', 'ivan@example.com');
+    cy.addParticipant('Петр Петров', 'petr@example.com');
+    // Добавить других участников по аналогии
+  });
+  
   describe('Manage Box Participants', () => {
     it('should add participants to the box', () => {
       cy.addParticipant('Gonshik0001', 'kulshaev@gmail.com');
@@ -127,3 +139,7 @@ describe("user can create a box and run it", () => {
   });
   
 });
+console.log(faker.name.findName()); // Должно выводить случайно сгенерированное имя
+console.log(faker.name.findName());
+
+

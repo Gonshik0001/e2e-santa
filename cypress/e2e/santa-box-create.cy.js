@@ -143,9 +143,13 @@ describe("user can create a box and run it", () => {
       }
     });
   });
+  after(() => {
+    cy.request('POST', '/api/deleteBox', { id: 'boxId' })
+      .then((response) => {
+        expect(response.body).to.have.property('status', 'success');
+      });
+  });
   
 });
-console.log(faker.name.findName()); // Должно выводить случайно сгенерированное имя
-console.log(faker.name.findName());
 
 

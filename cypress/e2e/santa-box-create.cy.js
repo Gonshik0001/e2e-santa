@@ -124,6 +124,12 @@ describe("user can create a box and run it", () => {
     cy.get(".btn-service").click();
   });
   //запуск жеребьевки
+  it('Запускает жеребьевку', () => {
+    cy.get('button[id="start-draw"]').click();
+    cy.contains('Жеребьевка запущена').should('be.visible');
+  });
+  
+
   it('should run the draw', () => {
     cy.get('[data-test=run-draw]').click();
     cy.contains('Draw was successful').should('be.visible');

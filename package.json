@@ -4,7 +4,8 @@
   "description": "",
   "main": "cypress.config.js",
   "scripts": {
-    "cy:run": "cypress run"
+    "cy:run": "cypress run",
+    "cy:run:cloud": "cypress run --record --key $CYPRESS_RECORD_KEY --ci-build-id ${BUILD_NUMBER}"
   },
   "type": "module",
   "author": "",
@@ -14,7 +15,7 @@
     "@faker-js/faker": "^8.4.1",
     "cypress": "^13.9.0",
     "cypress-cucumber-preprocessor": "^4.3.1",
-    "esbuild": "^0.21.1"
+    "esbuild": "^0.21.4"
   },
   "dependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^20.0.5",

@@ -4,14 +4,11 @@
   "description": "",
   "main": "cypress.config.js",
   "scripts": {
-    "cy:run": "cypress run",
-    "cy:run:cloud": "cypress run --record --key $CYPRESS_RECORD_KEY --ci-build-id ${BUILD_NUMBER}",
-    "clean:allure": "rm -rf allure-results && rm -rf allure-report",
     "test": "cypress run",
-    "test:allure": "npm run clean:allure && cypress run",
-    "allure:generate": "allure generate allure-results --clean",
-    "allure:open": "allure open allure-report",
-    "allure:report": "npm run allure:generate && npm run allure:open"
+  "allure:clear": "rimraf allure-results",
+  "allure:generate": "allure generate allure-results --clean",
+  "allure:open": "allure open",
+  "test:allure": "npm run allure:clear && npm run test && npm run allure:generate && npm run allure:open"
   },
   "type": "module",
   "author": "",
@@ -24,7 +21,8 @@
     "allure-commandline": "^2.29.0",
     "cypress": "^13.9.0",
     "cypress-cucumber-preprocessor": "^4.3.1",
-    "esbuild": "^0.21.4"
+    "esbuild": "^0.21.4",
+    "rimraf": "^5.0.7"
   },
   "dependencies": {
     "reflect-metadata": "^0.2.2"

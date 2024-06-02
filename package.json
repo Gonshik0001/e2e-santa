@@ -5,10 +5,10 @@
   "main": "cypress.config.js",
   "scripts": {
     "test": "cypress run",
-  "allure:clear": "rimraf allure-results",
-  "allure:generate": "allure generate allure-results --clean",
-  "allure:open": "allure open",
-  "test:allure": "npm run allure:clear && npm run test && npm run allure:generate && npm run allure:open"
+    "allure:clear": "rm -rf allure-results",
+    "allure:generate": "allure generate allure-results --clean",
+    "allure:open": "allure open",
+    "test:allure": "npm run allure:clear && npm run test && npm run allure:generate && npm run allure:open"
   },
   "type": "module",
   "author": "",

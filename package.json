@@ -5,20 +5,28 @@
   "main": "cypress.config.js",
   "scripts": {
     "cy:run": "cypress run",
-    "cy:run:cloud": "cypress run --record --key $CYPRESS_RECORD_KEY --ci-build-id ${BUILD_NUMBER}"
+    "cy:run:cloud": "cypress run --record --key $CYPRESS_RECORD_KEY --ci-build-id ${BUILD_NUMBER}",
+    "clean:allure": "rm -rf allure-results && rm -rf allure-report",
+    "test": "cypress run",
+    "test:allure": "npm run clean:allure && cypress run",
+    "allure:generate": "allure generate allure-results --clean",
+    "allure:open": "allure open allure-report",
+    "allure:report": "npm run allure:generate && npm run allure:open"
   },
   "type": "module",
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.5",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
     "@faker-js/faker": "^8.4.1",
+    "@shelex/cypress-allure-plugin": "^2.40.2",
+    "allure-commandline": "^2.29.0",
     "cypress": "^13.9.0",
     "cypress-cucumber-preprocessor": "^4.3.1",
     "esbuild": "^0.21.4"
   },
   "dependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^20.0.5",
     "reflect-metadata": "^0.2.2"
   }
 }

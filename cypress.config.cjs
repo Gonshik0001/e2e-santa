@@ -1,13 +1,19 @@
 const { defineConfig } = require('cypress');
 const createEsbuildPlugin = require('@bahmutov/cypress-esbuild-preprocessor');
+const allureWriter = require('@shelex/cypress-allure-plugin/writer');
+const cucumber = require('@badeball/cypress-cucumber-preprocessor');
 
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      // Ваши настройки событий
+      on('file:preprocessor', createEsbuildPlugin());
+      cucumber.addCucumberPreprocessorPlugin(on, config);
+      allureWriter(on, config);
+      return config;
     },
     baseUrl: 'https://santa-secret.ru/',
     specPattern: 'cypress/e2e/**/*.cy.js',
+    specPattern: 'cypress/e2e/**/*.feature',
+    supportFile: 'cypress/support/e2e.js',
   },
 });
-

@@ -4,8 +4,8 @@
   "description": "",
   "main": "cypress.config.js",
   "scripts": {
+    "allure:clear": "rimraf allure-results",
     "test": "cypress run",
-    "allure:clear": "rm -rf allure-results",
     "allure:generate": "allure generate allure-results --clean",
     "allure:open": "allure open",
     "test:allure": "npm run allure:clear && npm run test && npm run allure:generate && npm run allure:open"
@@ -14,17 +14,24 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^20.0.5",
-    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.7",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.1",
     "@faker-js/faker": "^8.4.1",
     "@shelex/cypress-allure-plugin": "^2.40.2",
     "allure-commandline": "^2.29.0",
-    "cypress": "^13.9.0",
+    "allure-cypress": "^2.15.1",
+    "cypress": "^13.12.0",
     "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-multi-reporters": "^1.6.4",
     "esbuild": "^0.21.4",
+    "mocha": "^10.4.0",
+    "mocha-junit-reporter": "^2.2.1",
+    "mocha-multi-reporters": "^1.5.1",
     "rimraf": "^5.0.7"
   },
   "dependencies": {
+    "jira-client": "^8.2.2",
+    "node-fetch": "^3.3.2",
     "reflect-metadata": "^0.2.2"
   }
 }

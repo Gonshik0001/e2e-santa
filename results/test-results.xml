@@ -1,26 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="13.251" tests="3" failures="3">
-  <testsuite name="Root Suite" timestamp="2024-06-21T02:27:12" tests="0" file="cypress\e2e\test_spec2.cy.js" time="0.000" failures="0">
-  </testsuite>
-  <testsuite name="User Management and Invitations" timestamp="2024-06-21T02:27:12" tests="3" time="13.246" failures="3">
-    <testcase name="User Management and Invitations User creates a new box and adds participants" time="0.000" classname="User creates a new box and adds participants">
-      <failure message="Timed out retrying after 4000ms: Expected to find element: `[data-test=email]`, but never found it." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 4000ms: Expected to find element: `[data-test=email]`, but never found it.
-    at Context.eval (https://santa-secret.ru/__cypress/tests?p=cypress\e2e\test_spec2.cy.js:72243:8)]]></failure>
-    </testcase>
-    <testcase name="User Management and Invitations User gets the invite link and logs out" time="0.000" classname="User gets the invite link and logs out">
-      <failure message="Timed out retrying after 4000ms: Expected to find element: `.btn-main`, but never found it." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 4000ms: Expected to find element: `.btn-main`, but never found it.
-    at Context.eval (https://santa-secret.ru/__cypress/tests?p=cypress\e2e\test_spec2.cy.js:72270:10)]]></failure>
-    </testcase>
-    <testcase name="User Management and Invitations User 1 approves the invitation and fills in details" time="0.000" classname="User 1 approves the invitation and fills in details">
-      <failure message="`cy.visit()` must be called with a `url` or an `options` object containing a `url` as its 1st argument
-
-https://on.cypress.io/visit" type="CypressError"><![CDATA[CypressError: `cy.visit()` must be called with a `url` or an `options` object containing a `url` as its 1st argument
-
-https://on.cypress.io/visit
-    at Context.visit (https://santa-secret.ru/__cypress/runner/cypress_runner.js:131130:70)
-    at wrapped (https://santa-secret.ru/__cypress/runner/cypress_runner.js:137986:43)
-From Your Spec Code:
-    at Context.eval (https://santa-secret.ru/__cypress/tests?p=cypress\e2e\test_spec2.cy.js:72277:10)]]></failure>
+<testsuites>
+  <testsuite name="Sample Test Suite" tests="2" failures="1" errors="0" skipped="0">
+    <testcase classname="SampleTest" name="testSuccess" time="0.1"/>
+    <testcase classname="SampleTest" name="testFailure" time="0.1">
+      <failure type="AssertionError">expected [true] but found [false]</failure>
     </testcase>
   </testsuite>
 </testsuites>
